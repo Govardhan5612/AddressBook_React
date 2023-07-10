@@ -1,31 +1,24 @@
 .App {
-  text-align: center;
+  padding: 5px;
+  background-color:gainsboro;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: center;
+  border: 2px solid goldenrod;
+  margin: 1px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.name{
+  font-size: 50px;
+  font-feature-settings: "liga", "clig";
+  font-variant: petite-caps;
+  color: darkgreen;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
