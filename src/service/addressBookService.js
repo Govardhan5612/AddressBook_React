@@ -26,6 +26,9 @@ class AddressBookService {
     serchByName(name){
         return axios.get(`${this.baseUrl}/searchByName/${name}`);
     }
+    login(name,email){
+        return axios.get(`${this.baseUrl}/login/${name}/${email}`)
+    }
 
 }
 export default new AddressBookService();

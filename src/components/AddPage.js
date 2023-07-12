@@ -1,12 +1,15 @@
 import { TextField, Button, MenuItem, FormControl, InputLabel, Select } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import HomeIcon from '@mui/icons-material/Home';
+//import HomeIcon from '@mui/icons-material/Home';
 import { Link } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import { useState } from 'react';
 import personService from "../service/addressBookService.js";
 import { useParams } from "react-router-dom";
 import { useEffect } from 'react';
+import HomeIcon from '@mui/icons-material/Home';
+import '../App.css';
+import logo from "../images/logo.jpg";
 
 function Add() {
     let initialValue = {
@@ -106,6 +109,16 @@ function Add() {
         }
     }
     return (
+        <div>
+            <div className="App">
+      <div class="image">
+        <img src={logo} width="100px" alt="Employee Payroll" />
+
+      </div>
+      <div class="name">
+        <span>Address Book</span>
+      </div>
+      </div>
         <div style={{
             display: "flex", justifyContent: "center",
             alignitems: "center", backgroundColor: "peachpuff", paddingTop: "75px",
@@ -125,7 +138,7 @@ function Add() {
                 borderWidth: "2px",
                 borderStyle: "solid",
                 borderColor: "blue",
-                borderRadius:"25px"
+                borderRadius: "25px"
             }} onSubmit={save}>
 
 
@@ -142,30 +155,30 @@ function Add() {
                 </Typography>
                 {/* <div style={{ display: "flex" }}> */}
                 <Grid container spacing={2}>
-                <Grid item xs={7}>
-                    <TextField
-                        label="First Name"
-                        value={formValue.firstName} onChange={ChangeValue}
-                        name='firstName'
-                        fullWidth
-                        margin="normal"
-                        color="warning"
-                        style={{ borderRadius: "5px" }}
-                    />
+                    <Grid item xs={7}>
+                        <TextField
+                            label="First Name"
+                            value={formValue.firstName} onChange={ChangeValue}
+                            name='firstName'
+                            fullWidth
+                            margin="normal"
+                            color="warning"
+                            style={{ borderRadius: "5px" }}
+                        />
                     </Grid>
                     <Grid item xs={5}>
-                    <TextField
-                        label="Last Name"
-                        value={formValue.lastName} onChange={ChangeValue}
-                        name='lastName'
-                        fullWidth
-                        margin="normal"
-                        color="warning"
-                    />
+                        <TextField
+                            label="Last Name"
+                            value={formValue.lastName} onChange={ChangeValue}
+                            name='lastName'
+                            fullWidth
+                            margin="normal"
+                            color="warning"
+                        />
                     </Grid>
-                    </Grid>
+                </Grid>
 
-                
+
                 <TextField
                     label="Phone Number"
                     value={formValue.phoneNumber} onChange={ChangeValue}
@@ -191,90 +204,91 @@ function Add() {
                     color="warning"
                 />
                 <Grid container spacing={2}>
-                <Grid item xs={4}>
+                    <Grid item xs={4}>
 
-                    <FormControl fullWidth margin='normal' color="warning">
-                        <InputLabel >City</InputLabel>
-                        <Select
-                            value={formValue.city}
-                            onChange={ChangeValue}
-                            label="city"
-                            name='city'
-                        >
-                            <MenuItem value="Mumbai">Mumbai</MenuItem>
-                            <MenuItem value="Pune">Pune</MenuItem>
-                            <MenuItem value="Banglore">Banglore</MenuItem>
-                            <MenuItem value="Chennai">Chennai</MenuItem>
-                            <MenuItem value="Tirupati">Tirupati</MenuItem>
-                            <MenuItem value="Vijayawada">Vijayawada</MenuItem>
-                            <MenuItem value="Turuvnanthapuram">Turuvnanthapuram</MenuItem>
-                            <MenuItem value="Hydrabad">Hydrabad</MenuItem>
-                            <MenuItem value="Kolkatha">Kolkatha</MenuItem>
-                        </Select>
-                    </FormControl>
+                        <FormControl fullWidth margin='normal' color="warning">
+                            <InputLabel >City</InputLabel>
+                            <Select
+                                value={formValue.city}
+                                onChange={ChangeValue}
+                                label="city"
+                                name='city'
+                            >
+                                <MenuItem value="Mumbai">Mumbai</MenuItem>
+                                <MenuItem value="Pune">Pune</MenuItem>
+                                <MenuItem value="Banglore">Banglore</MenuItem>
+                                <MenuItem value="Chennai">Chennai</MenuItem>
+                                <MenuItem value="Tirupati">Tirupati</MenuItem>
+                                <MenuItem value="Vijayawada">Vijayawada</MenuItem>
+                                <MenuItem value="Turuvnanthapuram">Turuvnanthapuram</MenuItem>
+                                <MenuItem value="Hydrabad">Hydrabad</MenuItem>
+                                <MenuItem value="Kolkatha">Kolkatha</MenuItem>
+                            </Select>
+                        </FormControl>
                     </Grid>
                     <Grid item xs={4}>
 
-                    <FormControl fullWidth margin='normal' color="warning">
-                        <InputLabel >State</InputLabel>
-                        <Select
-                            value={formValue.state} onChange={ChangeValue}
-                            label="state"
-                            name='state'
-                        >
-                            <MenuItem value="Maharastra">Maharastra</MenuItem>
-                            <MenuItem value="Andhra Pradesh">Andhra Pradesh</MenuItem>
-                            <MenuItem value="Tamil Nadu">Tamil Nadu</MenuItem>
-                            <MenuItem value="Karnataka">Karnataka</MenuItem>
-                            <MenuItem value="Kerala">Kerala</MenuItem>
-                            <MenuItem value="West Bengal">West Bengal</MenuItem>
-                            <MenuItem value="Telangana">Telangana</MenuItem>
-                        </Select>
-                    </FormControl>
+                        <FormControl fullWidth margin='normal' color="warning">
+                            <InputLabel >State</InputLabel>
+                            <Select
+                                value={formValue.state} onChange={ChangeValue}
+                                label="state"
+                                name='state'
+                            >
+                                <MenuItem value="Maharastra">Maharastra</MenuItem>
+                                <MenuItem value="Andhra Pradesh">Andhra Pradesh</MenuItem>
+                                <MenuItem value="Tamil Nadu">Tamil Nadu</MenuItem>
+                                <MenuItem value="Karnataka">Karnataka</MenuItem>
+                                <MenuItem value="Kerala">Kerala</MenuItem>
+                                <MenuItem value="West Bengal">West Bengal</MenuItem>
+                                <MenuItem value="Telangana">Telangana</MenuItem>
+                            </Select>
+                        </FormControl>
                     </Grid>
                     <Grid item xs={4}>
 
-                    <FormControl fullWidth margin='normal' color="warning">
-                        <InputLabel >Zip Code</InputLabel>
-                        <Select
-                            value={formValue.zipCode} onChange={ChangeValue}
-                            label="zipCode"
-                            name='zipCode'
-                        >
-                            <MenuItem value="123456">123456</MenuItem>
-                            <MenuItem value="654789">654789</MenuItem>
-                            <MenuItem value="014785">014785</MenuItem>
-                            <MenuItem value="852369">852369</MenuItem>
-                            <MenuItem value="984562">984562</MenuItem>
-                            <MenuItem value="258741">258741</MenuItem>
-                            <MenuItem value="100258">100258</MenuItem>
-                        </Select>
-                    </FormControl>
+                        <FormControl fullWidth margin='normal' color="warning">
+                            <InputLabel >Zip Code</InputLabel>
+                            <Select
+                                value={formValue.zipCode} onChange={ChangeValue}
+                                label="zipCode"
+                                name='zipCode'
+                            >
+                                <MenuItem value="123456">123456</MenuItem>
+                                <MenuItem value="654789">654789</MenuItem>
+                                <MenuItem value="014785">014785</MenuItem>
+                                <MenuItem value="852369">852369</MenuItem>
+                                <MenuItem value="984562">984562</MenuItem>
+                                <MenuItem value="258741">258741</MenuItem>
+                                <MenuItem value="100258">100258</MenuItem>
+                            </Select>
+                        </FormControl>
                     </Grid>
-                    </Grid>
-                <div style={{ display: "flex", paddingTop:"30px",justifyContent:"center", paddingLeft:"160px" }}>
+                </Grid>
+                <div style={{ display: "flex", paddingTop: "30px", justifyContent: "center", paddingLeft: "160px" }}>
                     <Grid container spacing={35}>
                         <Grid item xs={2}>
-                    <Button type="submit" variant="contained" color="primary" sx={{
-                        bgcolor: 'lightgreen',
-                        spacing: "10px",
-                       
-                    }}>
-                        {formValue.isUpdate ? "Update" : "Submit"}
-                    </Button>
-                    </Grid>
-                    <Grid item xs={2}>
-                    <Button type="reset" variant="contained" sx={{
-                        bgcolor: 'lightcoral',
-                    }}>
-                        Reset
-                    </Button>
-                    </Grid>
+                            <Button type="submit" variant="contained" color="primary" sx={{
+                                bgcolor: 'lightgreen',
+                                spacing: "10px",
+
+                            }}>
+                                {formValue.isUpdate ? "Update" : "Submit"}
+                            </Button>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Button type="reset" variant="contained" sx={{
+                                bgcolor: 'lightcoral',
+                            }}>
+                                Reset
+                            </Button>
+                        </Grid>
                     </Grid>
 
                 </div>
             </form>
 
+        </div>
         </div>
     );
 }
