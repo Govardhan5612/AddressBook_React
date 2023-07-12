@@ -13,11 +13,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import personsDetails from "../service/addressBookService.js"
+import personsDetails from "../service/addressBookService.js";
 import SortByAlphaRoundedIcon from '@mui/icons-material/SortByAlphaRounded';
 import SearchIcon from '@mui/icons-material/Search';
 import { Button } from "@mui/material";
-
+import '../App.css';
+import logo from "../images/logo.jpg";
 
 
 function Home() {
@@ -41,24 +42,24 @@ function Home() {
     let [formValue, setValue] = useState({ valuesAssign });
     let [count, setCount] = useState();
 
-    
+
 
 
 
 
 
     let getAllPersons = () => {
-        
-            personsDetails.getAllData().then((responce) => {
-                console.log("---into service----");
-                console.log(responce.data.data)
-                setValue({ PersonArray: responce.data.data })
-                setCount(responce.data.data.length);
-            }
-            ).catch(() => {
-                console.log("Person data not getting");
-            });
-        
+
+        personsDetails.getAllData().then((responce) => {
+            console.log("---into service----");
+            console.log(responce.data.data)
+            setValue({ PersonArray: responce.data.data })
+            setCount(responce.data.data.length);
+        }
+        ).catch(() => {
+            console.log("Person data not getting");
+        });
+
     }
     let sortByCity = () => {
         personsDetails.sortByCity().then((responce) => {
@@ -82,13 +83,13 @@ function Home() {
             console.log("Person data not getting");
         });
     }
-     
-    
-    let [name,setName] = useState();
-    let nameChange =(event)=>{
+
+
+    let [name, setName] = useState();
+    let nameChange = (event) => {
         setName(event.target.value);
     }
-    
+
     let searchByName = () => {
         personsDetails.serchByName(name).then((responce) => {
             console.log("---into service----");
@@ -101,7 +102,7 @@ function Home() {
         });
     }
 
-  
+
 
     let deletePerson = (id) => {
         let confirm = window.confirm(" Deleting conformantion ");
@@ -120,50 +121,59 @@ function Home() {
 
     return (
         <div>
+            <div className="App">
+      <div class="image">
+        <img src={logo} width="100px" alt="Employee Payroll" />
+
+      </div>
+      <div class="name">
+        <span>Address Book</span>
+      </div>
+      </div>
             <div style={{ display: 'flex', justifyContent: "space-between", fontWeight: "bold", color: "green", fontSize: "30px", paddingTop: "20px", paddingBottom: "20px" }}>
                 <div>
                     Total Person Details
                     <span style={{ color: "red" }}> ({count})
                     </span>
                 </div>
-                <Button  onClick={sortByCity} startIcon={<SortByAlphaRoundedIcon sx={{
-                        fontSize: 50,
-                        height:"25px"
-                    }}
-                    />} >
-                    
-                    CITY
-                    </Button>
-
-               <Button onClick={sortByState} startIcon={ <SortByAlphaRoundedIcon sx={{
+                <Button onClick={sortByCity} style={{ borderColor: "blue", borderWidth: "1px", borderStyle: "solid", }} startIcon={<SortByAlphaRoundedIcon sx={{
                     fontSize: 50,
-                    
+                    height: "25px"
+                }}
+                />} >
+
+                    CITY
+                </Button>
+
+                <Button onClick={sortByState} style={{ borderColor: "blue", borderWidth: "1px", borderStyle: "solid", }} startIcon={<SortByAlphaRoundedIcon sx={{
+                    fontSize: 50,
+
                 }}
                 />}>
-               
-                STATE
+
+                    STATE
                 </Button >
-               <Button  onClick={searchByName} style={{borderColor:"blue",borderWidth:"1px"}} >
-                <SearchIcon sx={{
-                    fontSize: 25,
-                    
-                }}
-                />
-                <input type="text"  name="firstName" value={name} onChange={nameChange} placeholder='search by name'style={{height:"25px",borderColor:"white"}} />
-                </Button>
-                
-                <Link to="/addPage" >
-                    <Button 
+                <Button onClick={searchByName} style={{ borderColor: "blue", borderWidth: "1px", borderStyle: "solid", }} >
+                    <SearchIcon sx={{
+                        fontSize: 25,
 
-                startIcon={<AddBoxIcon sx={{
-                        fontSize: 50,
                     }}
-
                     />
-                }>
-                    ADD
+                    <input type="text" name="firstName" value={name} onChange={nameChange} placeholder='search by name' style={{ height: "25px", borderColor: "white" }} />
+                </Button>
+
+                <Link to="/addPage" >
+                    <Button style={{ borderColor: "blue", borderWidth: "1px", borderStyle: "solid", }}
+
+                        startIcon={<AddBoxIcon sx={{
+                            fontSize: 50,
+                        }}
+
+                        />
+                        }>
+                        ADD
                     </Button>
-            
+
                 </Link>
             </div>
             <TableContainer component={Paper}>
